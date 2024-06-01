@@ -1,0 +1,148 @@
+**sobre carga de operadores**
+class Vector2D:
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+
+  def __add__(self, other):
+    if isinstance(other, Vector2D):
+      return Vector2D(self.x + other.x, self.y + other.y)
+    else:
+      raise TypeError("Suma solo permitida entre vectores")
+
+  def __mul__(self, scalar):
+    return Vector2D(self.x * scalar, self.y * scalar)
+
+v1 = Vector2D(3, 4)
+v2 = Vector2D(5, 6)
+escalar = 2
+
+suma = v1 + v2  # Vector2D(8, 10)
+producto = v1 * escalar  # Vector2D(6, 8)
+
+**ejemplo copy deep copy ***
+
+# Lista mutable
+lista = [1, [2, 3]]
+
+# Copia simple (modifica el original)
+copia = lista
+copia[1].append(4)
+print(lista)  # Salida: [1, [2, 3, 4]]
+print(copia)  # Salida: [1, [2, 3, 4]]
+
+# Copia profunda (no modifica el original)
+copia_profunda = copy.deepcopy(lista)
+copia_profunda[1].append(5)
+print(lista)  # Salida: [1, [2, 3, 4]]
+print(copia_profunda)  # Salida: [1, [2, 3, 5]]
+
+***ejemplo comprehension ***
+
+[i for i in range(1, N + 1) if i % 3 == 0 and i % 7 == 0 and i % 10 == 6]
+
+
+***ejemplo funciones
+
+lista = [1, 'a', 1, 13, 'hola', 'a', 1, 1, 'a', 1]
+
+d = funcion_ejemplo(lista, imprime=True)
+
+# Salida:
+1        *****   (5 -> 50%)
+'a'      ***     (3 -> 30%)
+13       *       (1 -> 10%)
+'hola'    *       (1 -> 10%)
+
+***ejemplo fundicos
+
+dic1 = {'Pepe': [12, 'enero', 1980], 'Carolina': [15, 'mayo', 1975], 'Paco': [10, 'nov', 1970]}
+
+dic2, dic_modificado = fundicos(dic1, 'Pepe', 1, 'febrero')
+
+print(dic1)  # Salida: {'Pepe': [12, 'enero', 1980], 'Carolina': [15, 'mayo', 1975], 'Paco': [10, 'nov', 1970]}
+print(dic_modificado)  # Salida: {'Pepe': [12, 'febrero', 1980], 'Carolina': [15, 'mayo', 1975], 'Paco': [10, 'nov', 1970]}
+
+
+****permutaciones 
+
+for permutacion in permutaciones([1, 2, 3]):
+  print(permutacion)
+
+
+**** horas validas 
+
+digitos = [1, 2, 3, 4]
+horas_validas = generar_horas_validas(digitos)
+print(horas_validas)
+
+
+***imprimir patron ascii
+
+imprimir_patron("+", 5)
+imprimir_patron("*/", 6)
+
+
+*** clases y objetos
+
+# Crear una matriz 3x3
+matriz1 = Matriz(3, 3)
+
+# Llenar la matriz con valores aleatorios entre 1 y 100
+for i in range(matriz1.n):
+  for j in range(matriz1.m):
+    matriz1.matriz[i][j] = random.randint(1, 100)
+
+# Imprimir la matriz
+print(f"Matriz 1:\n{matriz1}")
+
+# Crear una matriz 3x2
+matriz2 = Matriz(3, 2)
+
+# Llenar la matriz con valores fijos
+matriz2.matriz = [[1, 2], [3, 4], [5, 6]]
+
+# Imprimir la matriz
+print(f"\nMatriz 2:\n{matriz2}")
+
+# Suma de matrices
+matriz_suma = matriz1 + matriz2
+
+# Verificar si las dimensiones son compatibles para la suma
+if matriz1.n != matriz2.n or matriz1.m != matriz2.m:
+  print("\nLas matrices no se pueden sumar: dimensiones diferentes")
+else:
+  # Imprimir la matriz suma
+  print(f"\nSuma de matrices:\n{matriz_suma}")
+
+# Multiplicación de matrices (solo si las dimensiones son compatibles)
+if matriz1.m == matriz2.n:
+  matriz_multiplicacion = matriz1 * matriz2
+  print(f"\nMultiplicación de matrices:\n{matriz_multiplicacion}")
+else:
+  print("\nLas matrices no se pueden multiplicar: dimensiones no compatibles")
+
+# Multiplicación por un escalar
+escalar = 5
+matriz_escalar = matriz1 * escalar
+print(f"\nMultiplicación por escalar ({escalar}):\n{matriz_escalar}")
+
+# Eliminar una columna (índice 1)
+matriz1.eliminar_columna(1)
+print(f"\nMatriz 1 después de eliminar la columna 1:\n{matriz1}")
+
+# Eliminar una fila (índice 2)
+matriz2.eliminar_fila(2)
+print(f"\nMatriz 2 después de eliminar la fila 2:\n{matriz2}")
+
+# Mostrar la representación visual de las matrices
+print("\nRepresentación visual de la Matriz 1:")
+matriz1.mostrar()
+
+print("\nRepresentación visual de la Matriz 2:")
+matriz2.mostrar()
+
+
+
+
+
